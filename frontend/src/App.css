@@ -218,23 +218,33 @@ h1, h2 {
   color: #3b82f6;
   font-weight: 600;
 }
-
+/* History Table Styling */
 .history-table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 12px;
   background: #fff;
   border-radius: 8px;
-  overflow: hidden;
+  overflow: hidden; /* Rounds the corners of the table */
   box-shadow: 0 1px 4px rgba(0,0,0,0.04);
 }
 
 .history-table th, .history-table td {
   padding: 12px 8px;
-  text-align: center;
+  text-align: left; /* Align text to the left */
   color: #2d3748;
   background: #fff;
 }
+
+/* Table Header Styling */
+.history-table thead th {
+  background-color: #f2f2f2; /* Light gray background */
+  color: #333; /* Darker text color */
+  font-weight: bold;
+  text-align: left; /* Ensure header text is left-aligned */
+  border-bottom: 2px solid #ddd; /* Add a bottom border to the header */
+}
+
 
 .history-table th {
   background: #e2e8f0;
