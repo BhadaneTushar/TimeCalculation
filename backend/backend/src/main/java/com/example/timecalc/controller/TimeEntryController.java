@@ -94,4 +94,11 @@ public class TimeEntryController {
         }).collect(Collectors.toList());
         return ResponseEntity.ok(result);
     }
+
+    @DeleteMapping
+    public ResponseEntity<Void> clearAllEntries() {
+        timeEntryRepository.deleteAll();
+        dayEntryRepository.deleteAll();
+        return ResponseEntity.noContent().build();
+    }
 } 

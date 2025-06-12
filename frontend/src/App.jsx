@@ -19,7 +19,7 @@ function App() {
     setLoading(true)
     setError('')
     try {
-      const res = await fetch('/api/entries')
+      const res = await fetch('http://localhost:8081/api/entries')
       if (!res.ok) throw new Error('Failed to fetch history')
       const data = await res.json()
       // Sort history by date descending
@@ -43,9 +43,16 @@ function App() {
     setError('')
     setSummary(null)
     try {
-      const res = await fetch('/api/entries', {
+      const res = await fetch('http://localhost:8081/api/entries', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+        'Content-Type': 'application/json',
+        'Accept': '*/*',
+        'Origin': 'http://localhost:5173',
+        'Referer': 'http://localhost:5173/',
+        'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36'
+      },
+      credentials: 'include', // Include cookies for session authentication,
         body: JSON.stringify({ date, times: parsedTimes }),
       })
       if (!res.ok) {
@@ -81,13 +88,58 @@ function App() {
     }
   }
 
+  const handleClear = async () => {
+    setLoading(true)
+    try {
+      // Clear local state
+      setDate('')
+      setTimeString('')
+      setTimes([''])
+      setSummary(null)
+      setError('')
+
+      // Clear history from backend
+      const res = await fetch('http://localhost:8081/api/entries', {
+        method: 'DELETE',
+        credentials: 'include', // Include cookies for session authentication
+        headers: {
+          'Accept': '*/*',
+          'Content-Type': 'application/json',
+          'Origin': 'http://localhost:5173',
+          'Referer': 'http://localhost:5173/',
+          'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36'
+        }
+      })
+      if (!res.ok) throw new Error('Failed to clear history')
+      
+      // Update local history state
+      setHistory([])
+    } catch (e) {
+      setError('Failed to clear history: ' + e.message)
+    } finally {
+      setLoading(false)
+    }
+  }
+
   return (
     <div className="container">
       <h1>Average Time Calculator</h1>
       <form onSubmit={handleSaveDay} className="time-form">
+        <div className="button-group">
+          <button type="button" onClick={handleClear} disabled={loading} className="clear-button">
+            Clear All
+          </button>
+        </div>
+        <br />
         <label>
           Date:
-          <input type="date" value={date} onChange={e => setDate(e.target.value)} required />
+          <input 
+            type="date" 
+            value={date} 
+            onChange={e => setDate(e.target.value)} 
+            required 
+            disabled={loading}
+          />
         </label>
         <div className="times-list">
           <label htmlFor="time-string-input">Clock-in/Clock-out Times (comma-separated, e.g., 09:00 AM, 12:00 PM):</label>
@@ -98,10 +150,37 @@ function App() {
             onChange={e => setTimeString(e.target.value)}
             placeholder="e.g., 09:00 AM, 12:00 PM, 01:00 PM, 05:00 PM"
             required
+            disabled={loading}
           />
         </div>
-        <button type="submit" disabled={loading}>Save Day</button>
-        <button type="button" onClick={handleSaveDayAndNext} disabled={loading}>Save Day & Add Next Day</button>
+        <div className="button-group">
+          <button 
+            type="submit" 
+            disabled={loading || !date || !timeString.trim()}
+          >
+            Save Day
+          </button>
+          <button 
+            type="button" 
+            onClick={handleSaveDayAndNext} 
+            disabled={loading || !date || !timeString.trim()}
+          >
+            Save Day & Add Next Day
+          </button>
+          <button 
+            type="button" 
+            onClick={() => {
+              setDate('');
+              setTimeString('');
+              setSummary(null);
+              setError('');
+            }}
+            disabled={loading || (!date && !timeString.trim())}
+            className="clear-button"
+          >
+            Clear
+          </button>
+        </div>
       </form>
       {loading && <p>Loading...</p>}
       {error && <p className="error">{error}</p>}
