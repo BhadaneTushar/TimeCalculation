@@ -1,21 +1,248 @@
-#root {
+
+.app-container {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
-  text-align: center;
+  font-family: 'Inter', sans-serif;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.header {
+  margin-bottom: 2rem;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+
+.header h1 {
+  color: #1a1a1a;
+  font-size: 2.5rem;
+  margin: 0;
 }
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.form-section {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.time-form {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.instructions {
+  margin-bottom: 1.5rem;
+  color: #666;
+}
+
+.button-group {
+  margin-bottom: 1.5rem;
+}
+
+.clear-button {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin: 0.5rem 0;
+}
+
+.clear-button:hover {
+  background-color: #d32f2f;
+}
+
+.clear-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.add-button,
+.remove-button,
+.submit-button,
+.next-button {
+  background-color: #4285f4;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  min-width: 120px;
+}
+
+.add-button:hover,
+.remove-button:hover,
+.submit-button:hover,
+.next-button:hover {
+  background-color: #357abd;
+}
+
+.add-button:disabled,
+.remove-button:disabled,
+.submit-button:disabled,
+.next-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.remove-button {
+  background-color: #f44336;
+}
+
+.remove-button:hover {
+  background-color: #d32f2f;
+}
+
+.times-list label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.time-display {
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 500;
+  background: #f8f9fa;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.input-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  color: #333;
+  transition: border-color 0.3s;
+}
+
+.time-input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  color: #333;
+  transition: border-color 0.3s;
+  background: white;
+}
+
+.form-input:focus,
+.time-input:focus {
+  outline: none;
+  border-color: #4285f4;
+  box-shadow: 0 0 0 2px rgba(66, 133, 244, 0.2);
+}
+
+.summary-section {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.history-section {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.history-header {
+  margin-bottom: 1.5rem;
+}
+
+.history-header h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.instructions {
+  color: #666;
+}
+
+.table-container {
+  overflow-x: auto;
+  margin-top: 1rem;
+}
+
+.history-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.history-table th,
+.history-table td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.history-table th {
+  background-color: #f8f9fa;
+  font-weight: bold;
+}
+
+.even-row {
+  background-color: #fff;
+}
+
+.odd-row {
+  background-color: #f8f9fa;
+}
+
+.loading-message,
+.error-message {
+  padding: 1rem;
+  text-align: center;
+  color: #666;
+}
+
+.error-message {
+  color: #dc3545;
+}
+
+.history-section {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.loading {
+  color: #666;
+  font-style: italic;
+}
+
+.error {
+  color: #dc2626;
+  margin: 1rem 0;
+  padding: 0.5rem;
+  background: #fee2e2;
+  border-radius: 4px;
 }
 
 @keyframes logo-spin {
@@ -42,8 +269,8 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #f7f8fa;
+  font-family: 'Inter', 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(120deg, #f7f8fa 0%, #e3e9f7 100%);
   margin: 0;
   padding: 0;
 }
@@ -52,51 +279,78 @@ body {
   max-width: 600px;
   margin: 40px auto;
   background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
-  padding: 32px 28px 32px 28px;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(20, 40, 80, 0.10);
+  padding: 40px 24px 32px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 h1, h2 {
   text-align: center;
-  color: #2d3748;
+  color: #1a237e;
+  font-family: 'Inter', 'Roboto', sans-serif;
+  font-weight: 700;
   margin-bottom: 18px;
 }
 
-.time-form {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  margin-bottom: 32px;
+h1 {
+  font-size: 2.2rem;
+  letter-spacing: -1px;
+}
+h2 {
+  font-size: 1.4rem;
 }
 
-.time-form label {
-  font-weight: 500;
-  color: #444;
+.instructions {
+  font-size: 0.98rem;
+  color: #6b7280;
+  margin-bottom: 18px;
+  text-align: center;
+}
+
+.time-form label,
+.times-list label {
+  font-weight: 600;
+  color: #1a237e;
   margin-bottom: 6px;
+  font-size: 1.05rem;
 }
 
 .time-form input[type="date"],
-.time-form input[type="text"] {
-  padding: 8px 12px;
-  border: 1px solid #cbd5e1;
-  border-radius: 6px;
-  font-size: 1rem;
+.time-form input[type="text"],
+.time-form .react-datepicker-wrapper input,
+.time-form .react-datepicker__input-container input {
+  padding: 10px 14px;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 1.05rem;
   margin-top: 4px;
   margin-bottom: 8px;
   width: 100%;
   box-sizing: border-box;
+  background: #f8fafc;
+  box-shadow: 0 1px 2px rgba(30, 64, 175, 0.04);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.time-form input:focus,
+.time-form .react-datepicker-wrapper input:focus {
+  border-color: #1a237e;
+  box-shadow: 0 0 0 2px #e3e9f7;
+  outline: none;
 }
 
 .times-list {
-  margin-bottom: 8px;
+  margin-bottom: 12px;
+  width: 100%;
 }
 
-.time-row {
+.time-row, .times-list .flex {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 6px;
+  gap: 10px;
+  margin-bottom: 8px;
 }
 
 .time-row input {
@@ -105,100 +359,115 @@ h1, h2 {
 
 .time-form .button-group {
   display: flex;
-  gap: 10px;
-  margin-top: 15px;
+  gap: 12px;
+  margin-top: 18px;
+  justify-content: center;
 }
 
-.time-form button {
-  background: #4CAF50;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background 0.3s ease;
-}
-
-.time-form button.clear-button {
-  background: #dc2626;
-  color: white;
-}
-
-.time-form button.clear-button:hover:not(:disabled) {
-  background: #b91c1c;
-}
-
-.time-form button:hover:not(:disabled) {
-  background: #45a049;
-}
-
-.time-form button:disabled {
-  background: #cccccc;
-  cursor: not-allowed;
-}
-
-.time-form button[type="button"] {
-  background: #3182ce;
+.time-form button,
+.button-group button,
+.times-list button[type="button"] {
+  background: linear-gradient(90deg, #1a237e 60%, #3949ab 100%);
   color: #fff;
   border: none;
-  border-radius: 4px;
-  padding: 6px 16px;
-  margin-top: 4px;
+  padding: 10px 24px;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: 1rem;
-  transition: background 0.2s;
-}
-.time-form button[type="button"]:hover {
-  background: #2563eb;
-}
-
-.time-form button[type="submit"] {
-  background: #38a169;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  padding: 10px 0;
-  font-size: 1.1rem;
+  font-size: 1.08rem;
+  font-family: 'Inter', 'Roboto', sans-serif;
   font-weight: 600;
-  cursor: pointer;
-  margin-top: 10px;
+  box-shadow: 0 2px 8px rgba(30, 64, 175, 0.07);
+  transition: background 0.25s, box-shadow 0.18s, transform 0.12s;
+  margin-bottom: 0;
+}
+.time-form button:hover:not(:disabled),
+.button-group button:hover:not(:disabled),
+.times-list button[type="button"]:hover:not(:disabled) {
+  background: linear-gradient(90deg, #3949ab 60%, #1a237e 100%);
+  box-shadow: 0 4px 16px rgba(30, 64, 175, 0.13);
+  transform: translateY(-2px) scale(1.03);
+}
+.time-form button:active,
+.button-group button:active,
+.times-list button[type="button"]:active {
+  background: #1a237e;
+  transform: scale(0.98);
+}
+.time-form button:disabled,
+.button-group button:disabled,
+.times-list button[type="button"]:disabled {
+  background: #bfc7d1;
+  color: #fff;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+.time-form button.clear-button,
+.button-group button.clear-button {
+  background: #e53935;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 24px;
+  font-weight: 600;
   transition: background 0.2s;
 }
-.time-form button[type="submit"]:hover {
-  background: #2f855a;
+.time-form button.clear-button:hover:not(:disabled),
+.button-group button.clear-button:hover:not(:disabled) {
+  background: #b71c1c;
+}
+
+/* Toast notification */
+.toast {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  background: #1a237e;
+  color: #fff;
+  padding: 16px 28px;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(30, 64, 175, 0.18);
+  font-size: 1.08rem;
+  z-index: 9999;
+  opacity: 0.97;
+  animation: fadeIn 0.4s;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 0.97; transform: translateY(0); }
 }
 
 .summary {
-  background: #f0fff4;
-  border: 1px solid #c6f6d5;
-  border-radius: 8px;
-  padding: 18px 20px;
-  margin-bottom: 24px;
+  background: #f0f4ff;
+  border: 1.5px solid #bfc7d1;
+  border-radius: 12px;
+  padding: 22px 24px;
+  margin-bottom: 28px;
   margin-top: 18px;
-  color: #22543d;
+  color: #1a237e;
+  box-shadow: 0 1px 6px rgba(30, 64, 175, 0.06);
 }
 .summary h2 {
   margin-top: 0;
-  color: #276749;
+  color: #1a237e;
+  font-size: 1.2rem;
 }
-
 .summary p {
-  color: #2d3748 !important;
+  color: #3949ab !important;
+  font-size: 1.05rem;
 }
-
 .summary b {
-  color: #2d3748 !important;
+  color: #1a237e !important;
 }
 
 .error {
-  color: #e53e3e;
+  color: #e53935;
   background: #fff5f5;
-  border: 1px solid #fed7d7;
-  border-radius: 6px;
-  padding: 10px 14px;
+  border: 1.5px solid #ffcdd2;
+  border-radius: 8px;
+  padding: 12px 16px;
   margin-bottom: 18px;
   text-align: center;
+  font-size: 1.05rem;
 }
 
 .success {
@@ -210,50 +479,51 @@ h1, h2 {
 }
 
 .overtime {
-  color: #ef4444;
+  color: #e53935;
   font-weight: 600;
 }
 
 .remaining {
-  color: #3b82f6;
+  color: #1a237e;
   font-weight: 600;
 }
+
 /* History Table Styling */
 .history-table {
   width: 100%;
-  border-collapse: collapse;
-  margin-top: 12px;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: 16px;
   background: #fff;
-  border-radius: 8px;
-  overflow: hidden; /* Rounds the corners of the table */
-  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 8px rgba(30, 64, 175, 0.06);
+  font-size: 1.01rem;
 }
 
 .history-table th, .history-table td {
-  padding: 12px 8px;
-  text-align: left; /* Align text to the left */
-  color: #2d3748;
+  padding: 14px 10px;
+  text-align: left;
+  color: #1a237e;
   background: #fff;
+  border-right: 1px solid #e3e9f7;
+}
+.history-table th:last-child, .history-table td:last-child {
+  border-right: none;
 }
 
 /* Table Header Styling */
 .history-table thead th {
-  background-color: #f2f2f2; /* Light gray background */
-  color: #333; /* Darker text color */
-  font-weight: bold;
-  text-align: left; /* Ensure header text is left-aligned */
-  border-bottom: 2px solid #ddd; /* Add a bottom border to the header */
-}
-
-
-.history-table th {
-  background: #e2e8f0;
-  color: #2d3748;
-  font-weight: 600;
+  background-color: #e3e9f7;
+  color: #1a237e;
+  font-weight: 700;
+  text-align: left;
+  border-bottom: 2px solid #bfc7d1;
+  font-size: 1.02rem;
 }
 
 .history-table tr:nth-child(even) td {
-  background: #e6f0fa;
+  background: #f7f8fa;
 }
 
 .history-table tr:nth-child(odd) td {
@@ -262,10 +532,22 @@ h1, h2 {
 
 @media (max-width: 700px) {
   .container {
-    padding: 12px 2vw;
+    max-width: 98vw;
+    padding: 12px 2vw 18px 2vw;
+    border-radius: 10px;
   }
   .history-table th, .history-table td {
-    padding: 8px 2px;
-    font-size: 0.95rem;
+    padding: 10px 4px;
+    font-size: 0.97rem;
+  }
+  .summary {
+    padding: 12px 8px;
+  }
+  .time-form button, .button-group button {
+    padding: 8px 10px;
+    font-size: 0.98rem;
+  }
+  h1 {
+    font-size: 1.3rem;
   }
 }

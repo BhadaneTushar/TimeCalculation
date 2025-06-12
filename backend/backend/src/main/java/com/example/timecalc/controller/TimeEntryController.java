@@ -40,7 +40,12 @@ public class TimeEntryController {
         for (LocalTime t : times) {
             timeEntryList.add(TimeEntry.builder().time(t).dayEntry(dayEntry).build());
         }
-        dayEntry.setTimeEntries(timeEntryList);
+        if (dayEntry.getTimeEntries() == null) {
+            dayEntry.setTimeEntries(new ArrayList<>());
+        } else {
+            dayEntry.getTimeEntries().clear();
+        }
+        dayEntry.getTimeEntries().addAll(timeEntryList);
         dayEntryRepository.save(dayEntry);
 
         // Calculate average
